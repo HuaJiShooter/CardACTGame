@@ -161,8 +161,15 @@ namespace Platformer.Mechanics
             isDashing = true;
             float originalGravity = rb.gravityScale;
             rb.gravityScale = 0; // 暂时禁用重力影响
-            Vector2 dashDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+            // 使用记录的lastMoveDirection作为冲刺方向
+            // 如果lastMoveDirection接近零（比如玩家没有输入方向键），则使用当前面向方向
+            Vector2 dashDirection = lastMoveDirection != Vector2.zero ?
+                lastMoveDirection.normalized :
+                (spriteRenderer.flipX ? Vector2.left : Vector2.right);
+
             rb.velocity = dashDirection * dashSpeed;
+
             yield return new WaitForSeconds(dashDuration);
             rb.velocity = Vector2.zero;
             rb.gravityScale = originalGravity; // 恢复重力影响
