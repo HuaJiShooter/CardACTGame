@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{C693CE94-7330-F7C9-1E99-E71FC950FEB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -64,11 +65,13 @@
     <Compile Include="Assets\Scripts\Gameplay\PlayerSpawn.cs" />
     <Compile Include="Assets\Scripts\CardData\CardData.cs" />
     <Compile Include="Assets\Scripts\Gameplay\LogMessageTest.cs" />
+    <Compile Include="Assets\GameManager\HandController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\PlayAudioClip.cs" />
     <Compile Include="Assets\Scripts\Core\Simulation.InstanceRegister.cs" />
     <Compile Include="Assets\Mod Assets\Mod Resources\Scripts\Platformer\PlatformerSpeedPad.cs" />
     <Compile Include="Assets\Mod Assets\Mod Resources\Scripts\Platformer\Jiggler.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PlayerEnteredVictoryZone.cs" />
+    <Compile Include="Assets\GameManager\CardUIController.cs" />
     <Compile Include="Assets\Scripts\Mechanics\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Core\Simulation.cs" />
     <Compile Include="Assets\Mod Assets\Mod Resources\Scripts\Platformer\EmitParticlesOnLand.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\Scripts\Gameplay\HealthIsZero.cs" />
     <Compile Include="Assets\Scripts\Mechanics\PatrolPath.Mover.cs" />
     <Compile Include="Assets\Scripts\Core\Fuzzy.cs" />
+    <Compile Include="Assets\GameManager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Mechanics\DeathZone.cs" />
     <Compile Include="Assets\Scripts\Model\PlatformerModel.cs" />
     <Compile Include="Assets\Scripts\UI\MetaGameController.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="Assets\Mod Assets\Mod Resources\Scripts\Platformer\PlatformerJumpPad.cs" />
     <Compile Include="Assets\Scripts\View\AnimatedTile.cs" />
     <Compile Include="Assets\Scripts\Core\HeapQueue.cs" />
+    <Compile Include="Assets\GameManager\CardFactory.cs" />
     <Compile Include="Assets\Scripts\Mechanics\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\testScript1.cs" />
     <Compile Include="Assets\Scripts\Mechanics\PlayerController.cs" />
