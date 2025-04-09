@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class HandManager : MonoBehaviour
 {
     [Header("Deck Settings")]
-    public List<Card.Data> deck = new List<Card.Data>(); // 使用 Card.Data
-    public List<Card.Data> hand = new List<Card.Data>();
+    public List<Card.Data> deck = new List<Card.Data>(); // 这是抽排堆
+    public List<Card.Data> hand = new List<Card.Data>(); // 这是手牌堆
     public int handLimit = 10;
 
     [Header("References")]
@@ -39,6 +39,7 @@ public class HandManager : MonoBehaviour
         return data;
     }
 
+    // 绘制卡的协程
     private IEnumerator DrawCardRoutine()
     {
         while (true)

@@ -14,16 +14,7 @@ public class CardUI : MonoBehaviour
 
     private void Start()
     {
-        // 更安全的获取方式
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-        {
-            _handManager = player.GetComponent<HandManager>();
-        }
-        else
-        {
-            Debug.LogError("Player object not found!");
-        }
+
     }
 
     // 修改为使用 Card.Data
