@@ -20,8 +20,8 @@ namespace Platformer.Mechanics
 
         public float timeScaleLimit = 0.1f;
 
-        public float dashSpeed = 10f; // 冲刺速度
-        public float dashDuration = 0.1f; // 冲刺持续时间
+        public float dashSpeed = 10f;         // 冲刺初始速度
+        public float dashDeceleration = 20f;  // 冲刺减速度（单位：速度/秒）
         private Rigidbody2D rb;
         private bool isDashing = false;
         private Vector2 lastMoveDirection = Vector2.right; // 默认向右
@@ -58,7 +58,8 @@ namespace Platformer.Mechanics
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             Schedule<LogMessageTest>();
-            rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>(); 
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous; // 防止高速穿墙
         }
 
         protected override void Update()
@@ -160,19 +161,45 @@ namespace Platformer.Mechanics
         {
             isDashing = true;
             float originalGravity = rb.gravityScale;
-            rb.gravityScale = 0; // 暂时禁用重力影响
+            rb.gravityScale = 0;
 
-            // 使用记录的lastMoveDirection作为冲刺方向
-            // 如果lastMoveDirection接近零（比如玩家没有输入方向键），则使用当前面向方向
-            Vector2 dashDirection = lastMoveDirection != Vector2.zero ?
-                lastMoveDirection.normalized :
-                (spriteRenderer.flipX ? Vector2.left : Vector2.right);
+            // 计算冲刺方向（仅水平）
+            float dashDirectionX = lastMoveDirection.x != 0 ?
+                Mathf.Sign(lastMoveDirection.x) :
+                (spriteRenderer.flipX ? -1 : 1);
+            Vector2 dashDirection = new Vector2(dashDirectionX, 0);
 
-            rb.velocity = dashDirection * dashSpeed;
+            // 初始速度
+            float currentSpeed = dashSpeed;
 
-            yield return new WaitForSeconds(dashDuration);
+            // 冲刺过程（速度递减）
+            while (currentSpeed > 0)
+            {
+                // 撞墙检测
+                float rayDistance = collider2d.bounds.extents.x + 0.1f;
+                RaycastHit2D hit = Physics2D.Raycast(
+                    transform.position,
+                    dashDirection,
+                    rayDistance,
+                    LayerMask.GetMask("Ground")
+                );
+
+                if (hit.collider != null)
+                {
+                    Debug.Log("Hit wall, stopping dash");
+                    break;
+                }
+
+                // 应用当前速度
+                rb.velocity = dashDirection * currentSpeed;
+                currentSpeed -= dashDeceleration * Time.deltaTime;
+
+                yield return null;
+            }
+
+            // 重置状态
             rb.velocity = Vector2.zero;
-            rb.gravityScale = originalGravity; // 恢复重力影响
+            rb.gravityScale = originalGravity;
             isDashing = false;
         }
 
