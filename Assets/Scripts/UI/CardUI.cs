@@ -1,36 +1,63 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Ê¹ÓÃ TextMeshPro
+using TMPro;
 
 public class CardUI : MonoBehaviour
 {
+    [Header("UI References")]
     public TextMeshProUGUI cardName;
     public TextMeshProUGUI charge;
-    private CardData cardData;
-    public HandManager handManager;
+
+    [Header("Card Data")]
+    private Card.Data _cardData; // æ”¹ä¸ºä½¿ç”¨ Card.Data
+    private HandManager _handManager;
+
     private void Start()
     {
-        GameObject targetGameObject = GameObject.Find("Player");
-        handManager = targetGameObject.GetComponent<HandManager>();
+        // æ›´å®‰å…¨çš„è·å–æ–¹å¼
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            _handManager = player.GetComponent<HandManager>();
+        }
+        else
+        {
+            Debug.LogError("Player object not found!");
+        }
     }
 
-    public void Setup(CardData data)
+    // ä¿®æ”¹ä¸ºä½¿ç”¨ Card.Data
+    public void Setup(Card.Data data)
     {
-        cardData = data;
+        _cardData = data;
         cardName.text = data.cardName;
         charge.text = data.cost.ToString();
-        GetComponent<Button>().onClick.AddListener(OnCardClicked);
+
+        Button button = GetComponent<Button>();
+        if (button != null)
+        {
+            button.onClick.AddListener(OnCardClicked);
+        }
+        else
+        {
+            Debug.LogError("Button component not found on card!");
+        }
     }
 
     private void OnCardClicked()
     {
-        Debug.Log("²âÊÔ");
-        // ÕâÀï¿ÉÒÔÌí¼ÓÊ¹ÓÃ¿¨ÅÆµÄÂß¼­£¬ÀıÈç£º
-        // ¼ì²é·ÑÓÃÊÇ·ñ×ã¹»£¬Ö´ĞĞ¿¨ÅÆĞ§¹ûµÈ
-        //Debug.Log($"Ê¹ÓÃÁË¿¨ÅÆ£º{cardData.cardName}");
-        //cardData.effect?.Invoke();
-        // Ê¹ÓÃºóÏú»Ù¿¨ÅÆ
-        handManager.RemoveCardFromHand(cardData);
-        Destroy(gameObject);
+        Debug.Log("å¡ç‰Œè¢«ç‚¹å‡»");
+        if (_handManager != null && _cardData != null)
+        {
+            _handManager.RemoveCardFromHand(_cardData);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.LogError("HandManager or CardData is missing!");
+        }
     }
+
+    // å…¬å…±å±æ€§ä¾›å¤–éƒ¨è®¿é—®
+    public Card.Data GetCardData() => _cardData;
 }

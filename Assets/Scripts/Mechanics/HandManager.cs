@@ -1,27 +1,42 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class HandManager : MonoBehaviour
 {
-    public List<CardData> deck; // ¿¨×é
-    public List<CardData> hand; // µ±Ç°ÊÖÅÆ
-    public int handLimit = 10;  // ÊÖÅÆÉÏÏŞ
+    [Header("Deck Settings")]
+    public List<Card.Data> deck = new List<Card.Data>(); // ä½¿ç”¨ Card.Data
+    public List<Card.Data> hand = new List<Card.Data>();
+    public int handLimit = 10;
 
+    [Header("References")]
     public HandUI handUI;
 
     private void Start()
     {
-        deck = new List<CardData>();
-        for(int i = 0; i < 10; i++)
-        {
-            deck.Add(new CardData("ATK", 2));
-            deck.Add(new CardData("RUN", 1));
-            deck.Add(new CardData("DEF", 1));
-            deck.Add(new CardData("AAAA", 4));
-        }
-        hand = new List<CardData>();
+        InitializeDeck();
         StartCoroutine(DrawCardRoutine());
+    }
+
+    private void InitializeDeck()
+    {
+        // ç¤ºä¾‹å¡ç‰Œåˆ›å»º
+        for (int i = 0; i < 10; i++)
+        {
+            deck.Add(CreateCardData("ATK", 2));
+            deck.Add(CreateCardData("RUN", 1));
+            deck.Add(CreateCardData("DEF", 1));
+            deck.Add(CreateCardData("AAAA", 4));
+        }
+    }
+
+    private Card.Data CreateCardData(string name, int cost)
+    {
+        Card.Data data = ScriptableObject.CreateInstance<Card.Data>();
+        data.cardName = name;
+        data.cost = cost;
+        // è®¾ç½®å…¶ä»–é»˜è®¤å€¼...
+        return data;
     }
 
     private IEnumerator DrawCardRoutine()
@@ -37,35 +52,37 @@ public class HandManager : MonoBehaviour
     {
         if (hand.Count >= handLimit)
         {
-            Debug.Log("ÊÖÅÆÒÑÂú£¬ÎŞ·¨³éÈ¡ĞÂ¿¨ÅÆ¡£");
+            Debug.Log("æ‰‹ç‰Œå·²è¾¾ä¸Šé™");
             return;
         }
 
         if (deck.Count == 0)
         {
-            Debug.Log("¿¨×éÎª¿Õ£¬ÎŞ·¨³éÈ¡ĞÂ¿¨ÅÆ¡£");
+            Debug.Log("ç‰Œåº“ä¸ºç©º");
             return;
         }
 
-        CardData drawnCard = deck[0];
+        Card.Data drawnCard = deck[0];
         deck.RemoveAt(0);
         hand.Add(drawnCard);
-        Debug.Log($"³éÈ¡ÁË¿¨ÅÆ£º{drawnCard.cardName}");
-        // ÔÚ´Ë´¦Ìí¼Ó½«¿¨ÅÆÏÔÊ¾ÔÚ UI ÉÏµÄ´úÂë£¬ĞèÒª²¹Ò»¸öÊÇ·ñÊÇÍæ¼ÒµÄÅĞ¶¨£»
-        handUI.AddCardToHand(drawnCard);
+
+        if (handUI != null)
+        {
+            handUI.AddCardToHand(drawnCard);
+        }
     }
 
-    // ÒÆ³ıÖ¸¶¨µÄ¿¨ÅÆÊı¾İ
-    public void RemoveCardFromHand(CardData cardData)
+    public void RemoveCardFromHand(Card.Data cardData)
     {
         if (hand.Contains(cardData))
         {
             hand.Remove(cardData);
-            Debug.Log($"¿¨ÅÆ {cardData.cardName} ÒÑ´ÓÊÖÅÆÖĞÒÆ³ı¡£");
+            Debug.Log($"ç§»é™¤å¡ç‰Œ: {cardData.cardName}");
         }
-        else
-        {
-            Debug.LogWarning("³¢ÊÔÒÆ³ıµÄ¿¨ÅÆ²»ÔÚÊÖÅÆÖĞ¡£");
-        }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

@@ -1,68 +1,81 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandUI : MonoBehaviour
 {
-    public GameObject cardPrefab; // ¿¨ÅÆÔ¤ÖÆÌå
-    public Transform handPanel;   // ÊÖÅÆÇøÓòµÄ¸¸¶ÔÏó
-    public float duration = 0.15f;
+    [Header("UI Settings")]
+    public GameObject cardPrefab;
+    public Transform handPanel;
+    public float slideDuration = 0.15f;
+    public float visibleYPosition = 0f;
+    public float hiddenYPosition = -230f;
 
-    private Coroutine coroutine;
-
+    private Coroutine _slideCoroutine;
+    private bool _isHandVisible;
 
     private void Update()
     {
-        if (Input.GetButton("shift") && GetComponent<RectTransform>().position.y != 0)
+        bool shouldShow = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+        if (shouldShow != _isHandVisible)
         {
-            if (coroutine != null) StopCoroutine(coroutine);
-            coroutine = StartCoroutine(MoveUIElement(new Vector3(0, 0, 0), duration));
+            _isHandVisible = shouldShow;
+            SlideHandUI(_isHandVisible);
         }
-        else if (GetComponent<RectTransform>().position.y != -230)
-        {
-            if (coroutine != null) StopCoroutine(coroutine);
-            coroutine =  StartCoroutine(MoveUIElement(new Vector3(0, -230, 0), duration));
-        };
     }
 
-    // Ìí¼Ó¿¨ÅÆµ½ÊÖÅÆÇøÓò
-    public void AddCardToHand(CardData cardData)
+    public void AddCardToHand(Card.Data cardData) // ä¿®æ”¹ä¸º Card.Data
     {
-        Debug.Log("½øÈëµ½Ìí¼ÓÊÖÅÆµÄ´úÂë¶Î");
-        GameObject card = Instantiate(cardPrefab, handPanel);
-        CardUI cardUI = card.GetComponent<CardUI>();
+        if (cardPrefab == null || handPanel == null) return;
+
+        GameObject cardObj = Instantiate(cardPrefab, handPanel);
+        CardUI cardUI = cardObj.GetComponent<CardUI>();
+
         if (cardUI != null)
         {
             cardUI.Setup(cardData);
         }
-        else
-        {
-            Debug.LogError("CardUI ×é¼þÎ´ÕÒµ½£¡");
-        }
     }
 
-    // Çå¿ÕÊÖÅÆÇøÓò
-    public void ClearHand()
+    public void RemoveCardFromHand(Card.Data cardData) // ä¿®æ”¹ä¸º Card.Data
     {
         foreach (Transform child in handPanel)
         {
-            Destroy(child.gameObject);
+            CardUI cardUI = child.GetComponent<CardUI>();
+            if (cardUI != null && cardUI.GetCardData() == cardData)
+            {
+                Destroy(child.gameObject);
+                return;
+            }
         }
     }
 
-
-    private IEnumerator MoveUIElement(Vector3 target, float duration)
+    private void SlideHandUI(bool show)
     {
-        Vector3 start = GetComponent<RectTransform>().anchoredPosition;
+        if (_slideCoroutine != null) StopCoroutine(_slideCoroutine);
+
+        Vector3 target = show ?
+            new Vector3(0, visibleYPosition, 0) :
+            new Vector3(0, hiddenYPosition, 0);
+
+        _slideCoroutine = StartCoroutine(SlideAnimation(target));
+    }
+
+    private IEnumerator SlideAnimation(Vector3 target)
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        Vector3 start = rt.anchoredPosition;
         float elapsed = 0f;
 
-        while (elapsed < duration)
+        while (elapsed < slideDuration)
         {
             elapsed += Time.unscaledDeltaTime;
-            GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(start, target, elapsed / duration);
+            rt.anchoredPosition = Vector3.Lerp(start, target, elapsed / slideDuration);
             yield return null;
         }
 
-        GetComponent<RectTransform>().anchoredPosition = target;
-        coroutine = null;
+        rt.anchoredPosition = target;
+        _slideCoroutine = null;
     }
 }
