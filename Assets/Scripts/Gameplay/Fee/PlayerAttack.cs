@@ -5,12 +5,21 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Animator animator;
-    // Update is called once per frame
+
+    public GameObject RangeTrigger;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetTrigger("attack");
-                }
+        }
+    }
+    public void Attack()
+    {
+        RangeTrigger.SetActive(true);
+    }
+    public void AttackFinsiihed()
+    {
+        RangeTrigger.SetActive(false);
     }
 }

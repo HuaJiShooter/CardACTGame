@@ -169,8 +169,8 @@ namespace Platformer.Mechanics
             rb.gravityScale = originalGravity;
             isDashing = false;
         }
-
-        public enum JumpState
+     
+            public enum JumpState
         {
             Grounded,
             InFlight
