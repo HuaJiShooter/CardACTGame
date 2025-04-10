@@ -8,21 +8,22 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI cardName;
     public TextMeshProUGUI charge;
 
-    [Header("Card Data")]
-    private Card.Data _cardData; // 改为使用 Card.Data
-    private HandManager _handManager;
+    public Card card;
 
-    private void Start()
+
+    private HandUI _handUI;
+
+
+
+    //在UI中创建卡牌
+    public void Setup(Card card,HandUI handUI)
     {
 
-    }
-
-    // 修改为使用 Card.Data
-    public void Setup(Card.Data data)
-    {
-        _cardData = data;
-        cardName.text = data.cardName;
-        charge.text = data.cost.ToString();
+        //初始化数据
+        this.card = card;
+        cardName.text = card.CardData.cardName;
+        charge.text = card.CardData.cost.ToString();
+        _handUI = handUI;
 
         Button button = GetComponent<Button>();
         if (button != null)
@@ -35,20 +36,24 @@ public class CardUI : MonoBehaviour
         }
     }
 
+    //卡牌被使用时的触发
     private void OnCardClicked()
     {
+
         Debug.Log("卡牌被点击");
-        if (_handManager != null && _cardData != null)
+        if (_handUI != null && card != null)
         {
-            _handManager.RemoveCardFromHand(_cardData);
-            Destroy(gameObject);
+            //使用这张卡，先通知HandUI移出手牌
+            _handUI.RemoveCardFromHand(gameObject);
+
+            //然后通知HandManager将这张牌放入弃牌堆并使用它
         }
         else
         {
             Debug.LogError("HandManager or CardData is missing!");
         }
+
     }
 
-    // 公共属性供外部访问
-    public Card.Data GetCardData() => _cardData;
+
 }
