@@ -26,7 +26,6 @@ logs
 .vscode
 .idea
 .gradle
-*.log
 ExportedObj
 .consulo
 *.csproj
@@ -60,4 +59,3 @@ crashlytics-build.properties
 .DS_Store*
 Thumbs.db
 Desktop.ini
-*.log

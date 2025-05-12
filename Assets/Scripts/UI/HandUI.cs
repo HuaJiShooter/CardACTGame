@@ -25,7 +25,7 @@ public class HandUI : MonoBehaviour
         }
     }
 
-    public void AddCardToHand(Card card)
+    public void AddCardToHand(Card.Data cardData)
     {
         if (cardPrefab == null || handPanel == null) return;
 
@@ -34,14 +34,21 @@ public class HandUI : MonoBehaviour
 
         if (cardUI != null)
         {
-            cardUI.Setup(card,this);
+            cardUI.Setup(cardData);
         }
     }
 
-    //由HandUI负责销毁卡牌UI对象
-    public void RemoveCardFromHand(GameObject cardUI)
+    public void RemoveCardFromHand(Card card)
     {
-        Destroy(cardUI);
+        foreach (Transform child in handPanel)
+        {
+            CardUI cardUI = child.GetComponent<CardUI>();
+            if (cardUI != null)
+            {
+                Destroy(child.gameObject);
+                return;
+            }
+        }
     }
 
     private void SlideHandUI(bool show)

@@ -5,9 +5,8 @@ using System.Collections.Generic;
 public class HandManager : MonoBehaviour
 {
     [Header("Deck Settings")]
-    public List<Card> deck = new List<Card>(); // 这是抽排堆
-    public List<Card> hand = new List<Card>(); // 这是手牌堆
-    public List<Card> fold = new List<Card>(); // 这是弃牌堆
+    public List<Card.Data> deck = new List<Card.Data>(); // 这是抽排堆
+    public List<Card.Data> hand = new List<Card.Data>(); // 这是手牌堆
     public int handLimit = 10;
 
     [Header("References")]
@@ -22,29 +21,25 @@ public class HandManager : MonoBehaviour
     private void InitializeDeck()
     {
         // 示例卡牌创建
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
-            deck.Add(CreateCard("ATK", 2));
-            deck.Add(CreateCard("RUN", 1));
-            deck.Add(CreateCard("DEF", 1));
-            deck.Add(CreateCard("AAAA", 4));
+            deck.Add(CreateCardData("ATK", 2));
+            deck.Add(CreateCardData("RUN", 1));
+            deck.Add(CreateCardData("DEF", 1));
+            deck.Add(CreateCardData("AAAA", 4));
         }
     }
 
-    private Card CreateCard(string name, int cost)
+    private Card.Data CreateCardData(string name, int cost)
     {
-
-        Card card = new Card(name,cost);
-        CardData carddata = card.CardData;
-
-        carddata.cardName = name;
-        carddata.cost = cost;
-
+        Card.Data data = ScriptableObject.CreateInstance<Card.Data>();
+        data.cardName = name;
+        data.cost = cost;
         // 设置其他默认值...
-        return card;
+        return data;
     }
 
-    // 抽卡的协程
+    // 绘制卡的协程
     private IEnumerator DrawCardRoutine()
     {
         while (true)
@@ -53,7 +48,6 @@ public class HandManager : MonoBehaviour
             DrawCard();
         }
     }
-
 
     public void DrawCard()
     {
@@ -69,27 +63,23 @@ public class HandManager : MonoBehaviour
             return;
         }
 
-        //获取抽牌堆的第一张牌，并将其移至手牌堆中
-        Card drawnCard = deck[0];
+        Card.Data drawnCard = deck[0];
         deck.RemoveAt(0);
         hand.Add(drawnCard);
 
         if (handUI != null)
         {
-            Debug.Log($"抽取卡牌:{drawnCard.CardData.cardName}");
             handUI.AddCardToHand(drawnCard);
         }
     }
 
-    public void RemoveCardFromHand(Card card)
+    public void RemoveCardFromHand(Card.Data cardData)
     {
-
-        if (hand.Contains(card))
+        if (hand.Contains(cardData))
         {
-            hand.Remove(card);
-            Debug.Log($"移除卡牌: {card.CardData.cardName}");
+            hand.Remove(cardData);
+            Debug.Log($"移除卡牌: {cardData.cardName}");
         }
-
     }
 
     private void OnDestroy()
