@@ -59,3 +59,6 @@ crashlytics-build.properties
 .DS_Store*
 Thumbs.db
 Desktop.ini
+Assets/Scripts/Mechanics/HandManager.cs.meta
+Assets/Scripts/UI/CardUI.cs.meta
+Assets/Scripts/UI/HandUI.cs.meta

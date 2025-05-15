@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"3284c74fb2aa2f26","type":"group","x":-440,"y":-260,"width":1073,"height":710,"label":"Card类"},
+		{"id":"f0742b2598882df8","type":"text","text":"Modifier列表","x":-364,"y":80,"width":137,"height":60,"color":"5"},
+		{"id":"cb67f3c54292af21","type":"text","text":"条件列表","x":-109,"y":85,"width":163,"height":50},
+		{"id":"e1f0ed5ce9ef550c","type":"text","text":"效果列表","x":-109,"y":154,"width":164,"height":60},
+		{"id":"2e1d8a3aa1b35733","type":"text","text":"方法：\nLoadModifiers\nCanUse\nuse\n... ...","x":-392,"y":220,"width":193,"height":191,"color":"3"},
+		{"id":"704786e1f7e1b570","type":"text","text":"攻击模组数据","x":420,"y":-230,"width":162,"height":60},
+		{"id":"41e9065c24018455","type":"text","text":"攻击使用的动画，攻击有效范围","x":420,"y":-140,"width":162,"height":115},
+		{"id":"645a77e54f21b684","type":"text","text":"Card类","x":-364,"y":-170,"width":137,"height":60,"color":"5"},
+		{"id":"6fc4d6324389883b","type":"text","text":"\nCardData","x":844,"y":100,"width":137,"height":60,"color":"5"},
+		{"id":"5baad63eab0e515d","type":"text","text":"Modifier的ID列表","x":752,"y":262,"width":323,"height":60},
+		{"id":"4d5acc8dea24ad09","type":"text","text":"卡面","x":753,"y":412,"width":103,"height":60},
+		{"id":"a720ce0180a0eda0","type":"text","text":"卡牌名，通常倍率，费用，CD","x":751,"y":200,"width":279,"height":50},
+		{"id":"4b2d73a416be8d9c","type":"text","text":"攻击模组数据","x":751,"y":340,"width":162,"height":60},
+		{"id":"b842d2e435fb0802","type":"text","text":"描述","x":949,"y":340,"width":162,"height":60}
+	],
+	"edges":[
+		{"id":"7f50cef1c2a68aa7","fromNode":"f0742b2598882df8","fromSide":"right","toNode":"cb67f3c54292af21","toSide":"left"},
+		{"id":"a1ccfbba5cc8ccbe","fromNode":"f0742b2598882df8","fromSide":"bottom","toNode":"2e1d8a3aa1b35733","toSide":"top"},
+		{"id":"e7b5e5cd082fac9d","fromNode":"f0742b2598882df8","fromSide":"right","toNode":"e1f0ed5ce9ef550c","toSide":"left"},
+		{"id":"0cc30537923bea80","fromNode":"704786e1f7e1b570","fromSide":"bottom","toNode":"41e9065c24018455","toSide":"top"}
+	]
+}

@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "211055a426a2c4ed",
+    "type": "split",
+    "children": [
+      {
+        "id": "39fceb8a7b97b3eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4bd829351af31c93",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "卡牌生成流程.canvas",
+                "viewState": {
+                  "x": 836.1637938819596,
+                  "y": 1311.5041060543317,
+                  "zoom": -0.30638698570710726
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "卡牌生成流程"
+            }
+          },
+          {
+            "id": "36474f1a6949fbba",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "毕设系统设计.canvas",
+                "viewState": {
+                  "x": -2085.0891897824436,
+                  "y": 2752.9032066613004,
+                  "zoom": -1.0007083740077463
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "毕设系统设计"
+            }
+          },
+          {
+            "id": "8c2fc9d619ab39dd",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "毕设系统设计.canvas",
+                "viewState": {
+                  "x": -446.84599206456346,
+                  "y": 610.7956624584889,
+                  "zoom": -1.3340417073410795
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "毕设系统设计"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fc513421e3a1653d",
+    "type": "split",
+    "children": [
+      {
+        "id": "af645211595f106b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "98cc5e6634b8e6ef",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "f209da31767ed05f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "47202849a64cca61",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9a3f5f35dfa1bfce",
+    "type": "split",
+    "children": [
+      {
+        "id": "2b21efd72ce2dda5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "114ecca720283718",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "卡牌生成流程.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "卡牌生成流程 的反向链接列表"
+            }
+          },
+          {
+            "id": "f6e7ed4ba9fdc7ff",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "卡牌生成流程.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "卡牌生成流程 的出链列表"
+            }
+          },
+          {
+            "id": "40acf2bb6fbfa4f0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "c42c279a09c208e3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "卡牌生成流程.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "卡牌生成流程 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "4bd829351af31c93",
+  "lastOpenFiles": [
+    "战斗循环.canvas",
+    "头脑风暴.canvas",
+    "Card父类.canvas",
+    "毕设系统设计.canvas",
+    "Modifier/卡牌Modifier父类.canvas",
+    "进度.md",
+    "卡牌生成流程.canvas",
+    "Modifier/Modifier.canvas",
+    "Modifier",
+    "想法.md",
+    "欢迎.md"
+  ]
+}
