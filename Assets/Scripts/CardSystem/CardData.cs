@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Card
+public class CardData
 {
     // 内部类 - 卡牌数据
     [System.Serializable]
@@ -66,7 +66,7 @@ public class Card
     public bool isExhausted { get; private set; } // 是否已使用
 
     // 构造函数
-    public Card(Data data)
+    public CardData(Data data)
     {
         this.cardData = data;
         this.isExhausted = false;

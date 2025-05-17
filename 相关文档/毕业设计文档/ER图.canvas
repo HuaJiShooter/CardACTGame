@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"8d40b64c4fcde0d3","type":"text","text":"Modifier表","x":222,"y":-380,"width":175,"height":60},
+		{"id":"1eff0e6fde232e78","type":"text","text":"Modifier名称","x":520,"y":-440,"width":146,"height":60},
+		{"id":"c117af6594ee5b5c","type":"text","text":"ModifierID","x":520,"y":-520,"width":146,"height":60},
+		{"id":"1a8805d95417fa9c","type":"text","text":"Condition列表（json数据）","x":520,"y":-360,"width":274,"height":60},
+		{"id":"c57e4db6446409bf","type":"text","text":"Effect列表（json数据）","x":520,"y":-270,"width":250,"height":60},
+		{"id":"873f7088e78b71c7","type":"text","text":"卡牌表","x":40,"y":-380,"width":120,"height":60},
+		{"id":"e14bac7e90a6218a","type":"text","text":"卡牌ID","x":-274,"y":-650,"width":140,"height":60},
+		{"id":"ace87b1c142ef613","type":"text","text":"卡牌名称","x":-274,"y":-570,"width":140,"height":60},
+		{"id":"2889b9451614f4eb","type":"text","text":"卡牌描述","x":-274,"y":-490,"width":140,"height":60},
+		{"id":"5fbc8e091d8d2842","type":"text","text":"冷却时间","x":-274,"y":-410,"width":140,"height":60},
+		{"id":"82f452a673dda954","type":"text","text":"卡牌挂载Modifier（json数据）","x":-420,"y":-330,"width":286,"height":60},
+		{"id":"b9717650f59506e3","type":"text","text":"卡牌挂载对象（json数据）","x":-388,"y":-250,"width":254,"height":60},
+		{"id":"67efadbb1ab397b1","type":"text","text":"卡面路径","x":-269,"y":-170,"width":135,"height":60},
+		{"id":"ec1eea49a3df9254","type":"text","text":"卡牌费用","x":-269,"y":-90,"width":135,"height":60}
+	],
+	"edges":[
+		{"id":"72f144e6ba53d412","fromNode":"8d40b64c4fcde0d3","fromSide":"right","toNode":"c117af6594ee5b5c","toSide":"left"},
+		{"id":"97c6c9d02d08f3a3","fromNode":"8d40b64c4fcde0d3","fromSide":"right","toNode":"1eff0e6fde232e78","toSide":"left"},
+		{"id":"f233f60cd08adfd5","fromNode":"8d40b64c4fcde0d3","fromSide":"right","toNode":"1a8805d95417fa9c","toSide":"left"},
+		{"id":"a253c9b4d345493a","fromNode":"8d40b64c4fcde0d3","fromSide":"right","toNode":"c57e4db6446409bf","toSide":"left"},
+		{"id":"37d1435f25ce6a3b","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"e14bac7e90a6218a","toSide":"right"},
+		{"id":"06c5e7917a7d3a68","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"ace87b1c142ef613","toSide":"right"},
+		{"id":"802e1c3d28053c5e","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"2889b9451614f4eb","toSide":"right"},
+		{"id":"fb402f09d0d17347","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"5fbc8e091d8d2842","toSide":"right"},
+		{"id":"737cb940f4b2be3c","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"82f452a673dda954","toSide":"right"},
+		{"id":"0c96754e2fc6dd30","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"b9717650f59506e3","toSide":"right"},
+		{"id":"2f786d72da6648c6","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"67efadbb1ab397b1","toSide":"right"},
+		{"id":"2fc46adf6cdc15bc","fromNode":"873f7088e78b71c7","fromSide":"left","toNode":"ec1eea49a3df9254","toSide":"right"}
+	]
+}

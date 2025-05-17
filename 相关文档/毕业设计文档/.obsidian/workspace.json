@@ -11,17 +11,14 @@
             "id": "4bd829351af31c93",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "卡牌生成流程.canvas",
-                "viewState": {
-                  "x": 836.1637938819596,
-                  "y": 1311.5041060543317,
-                  "zoom": -0.30638698570710726
-                }
+                "file": "工具类用法/JsonListUtility.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "卡牌生成流程"
+              "icon": "lucide-file",
+              "title": "JsonListUtility"
             }
           },
           {
@@ -32,8 +29,8 @@
               "state": {
                 "file": "毕设系统设计.canvas",
                 "viewState": {
-                  "x": -2085.0891897824436,
-                  "y": 2752.9032066613004,
+                  "x": -1970.7474163700076,
+                  "y": 2431.602723225538,
                   "zoom": -1.0007083740077463
                 }
               },
@@ -47,15 +44,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "毕设系统设计.canvas",
+                "file": "Modifier/Modifier.canvas",
                 "viewState": {
-                  "x": -446.84599206456346,
-                  "y": 610.7956624584889,
-                  "zoom": -1.3340417073410795
+                  "x": 2438.7787655754955,
+                  "y": 420.1722101239484,
+                  "zoom": -1.699410426286194
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "毕设系统设计"
+              "title": "Modifier"
             }
           }
         ]
@@ -207,14 +204,18 @@
   },
   "active": "4bd829351af31c93",
   "lastOpenFiles": [
-    "战斗循环.canvas",
-    "头脑风暴.canvas",
-    "Card父类.canvas",
-    "毕设系统设计.canvas",
-    "Modifier/卡牌Modifier父类.canvas",
-    "进度.md",
-    "卡牌生成流程.canvas",
+    "工具类用法/ParamHelper.md",
+    "工具类用法/JsonListUtility.md",
     "Modifier/Modifier.canvas",
+    "毕设系统设计.canvas",
+    "工具类用法",
+    "ER图.canvas",
+    "Modifier/卡牌Modifier父类.canvas",
+    "卡牌生成流程.canvas",
+    "头脑风暴.canvas",
+    "战斗循环.canvas",
+    "Card父类.canvas",
+    "进度.md",
     "Modifier",
     "想法.md",
     "欢迎.md"
