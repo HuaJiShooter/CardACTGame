@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 // ---------------- Event ϵͳ ----------------
-public enum GameEvt { HandChanged, CardPlayed, BuffApplied, ManaChanged }
+public enum GameEvt { HandChanged, CardPlayed, BuffApplied, ManaChanged , DrawCard}
 
 public struct GameEvent {
     public GameEvt Type;

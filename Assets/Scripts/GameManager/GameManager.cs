@@ -4,6 +4,7 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    /*
     // 单例实例
     public static GameManager Instance { get; private set; }
 
@@ -15,18 +16,7 @@ public class GameManager : MonoBehaviour
     // 所有卡牌数据资源（在Inspector中赋值）
     [SerializeField] private Card.Data[] _allCardData;
     // 在 GameManager 类中添加：
-    public void MoveToDiscardPile(Card card)
-    {
-        if (!_handPile.Contains(card))
-        {
-            Debug.LogWarning("无法弃牌：卡牌不在手牌中");
-            return;
-        }
-
-        _handPile.Remove(card);
-        _discardPile.Add(card);
-        Debug.Log($"弃掉卡牌: {card.cardData.cardName}");
-    }
+    
     private void Awake()
     {
         // 单例初始化
@@ -53,7 +43,7 @@ public class GameManager : MonoBehaviour
         // 1. 加载所有卡牌数据（如果没在Inspector中赋值）
         if (_allCardData == null || _allCardData.Length == 0)
         {
-            _allCardData = Resources.LoadAll<Card.Data>("CardData");
+            _allCardData = Resources.LoadAll<Card.CardData>("CardData");
             if (_allCardData == null || _allCardData.Length == 0)
             {
                 Debug.LogError("没有找到卡牌数据！");
@@ -118,7 +108,7 @@ public class GameManager : MonoBehaviour
             _drawPile.RemoveAt(0);
             _handPile.Add(drawnCard);
 
-            Debug.Log($"抽到卡牌: {drawnCard.cardData.cardName}");
+            Debug.Log($"抽到卡牌: {drawnCard.cardData.CardName}");
         }
     }
 
@@ -147,12 +137,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        card.Use();
+        card.Play();
         _handPile.Remove(card);
         _discardPile.Add(card);
 
-        Debug.Log($"使用卡牌: {card.cardData.cardName}");
+        Debug.Log($"使用卡牌: {card.cardData.CardName}");
     }
+
+
 
     // 示例：获取当前手牌（UI显示用）
     public IEnumerable<Card> GetHandCards()
@@ -165,4 +157,5 @@ public class GameManager : MonoBehaviour
 
     // 获取弃牌堆数量（UI显示用）
     public int GetDiscardPileCount() => _discardPile.Count;
+    */
 }

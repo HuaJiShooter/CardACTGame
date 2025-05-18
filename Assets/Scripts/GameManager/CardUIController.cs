@@ -2,49 +2,70 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardUIController : MonoBehaviour, IPointerClickHandler
+public class CardUIController : MonoBehaviour
 {
     [Header("UI组件")]
+    public GameObject cardUIPrefab;//卡牌UI预制体
+    public Image cardImage;
+
+    [Header("References")]
+    public Transform handPanel;
+    public HandUI handUI;
+
+    // 关联的对象
+    private HandController _handController;
     public Text cardNameText;
     public Text costText;
     public Text descriptionText;
-    public Image cardImage;
 
-    // 关联的卡牌对象
-    private Card _associatedCard;
-    private HandController _handController;
+    private void Start()
+    {
+        
+    }
 
     // 初始化UI
     public void Initialize(Card card, HandController handController)
     {
-        _associatedCard = card;
+        Card _associatedCard = card;
         _handController = handController;
 
         // 更新UI显示
-        cardNameText.text = card.cardData.cardName;
-        costText.text = card.cardData.cost.ToString();
-        descriptionText.text = card.cardData.baseEffect.effectDescription;
+        cardNameText.text = card.cardData.CardName;
+        costText.text = card.curCost.ToString();
+        descriptionText.text = card.cardData.Description;
+    }
 
-        // 这里可以添加根据卡牌类型设置不同颜色等
-        switch (card.cardData.cardType)
+    // 点击使用卡牌事件处理
+    public void UseCard(CardUI cardUI)
+    {
+        Debug.Log("点击了卡牌");
+    }
+
+    // 添加卡牌到手牌（UI层面）
+    public void AddCardToHand(Card card)
+    {
+        if (cardUIPrefab == null || handPanel == null) return;
+
+        GameObject cardObj = Instantiate(cardUIPrefab, handPanel);    //在handPanel生成预制体
+        CardUI cardUI = cardObj.GetComponent<CardUI>();
+
+        if (cardUI != null)
         {
-            case Card.Data.CardType.Attack:
-                cardImage.color = Color.red;
-                break;
-            case Card.Data.CardType.Defense:
-                cardImage.color = Color.blue;
-                break;
-                // 其他类型...
+            cardUI.Setup(card);
         }
     }
 
-    // 点击事件处理
-    public void OnPointerClick(PointerEventData eventData)
+    public void RemoveCardFromHand(Card card)
     {
-        if (_associatedCard == null) return;
-
-        // 通知手牌控制器使用这张卡牌
-        _handController.UseCard(this, _associatedCard);
+        foreach (Transform child in handPanel)
+        {
+            CardUI cardUI = child.GetComponent<CardUI>();
+            if (cardUI != null)
+            {
+                Destroy(child.gameObject);
+                return;
+            }
+        }
     }
 
     // 销毁卡牌UI

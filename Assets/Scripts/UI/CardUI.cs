@@ -7,24 +7,25 @@ public class CardUI : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI cardName;
     public TextMeshProUGUI charge;
+    public TextMeshProUGUI descriptionText;
 
     [Header("Card Data")]
-    private Card.Data _cardData; // 改为使用 Card.Data
-    private HandManager _handManager;
+    private Card card;
+    private CardUIController _cardUIController;
 
     private void Start()
     {
 
     }
 
-    // 修改为使用 Card.Data
-    public void Setup(Card.Data data)
+    //设置卡牌至手牌区
+    public void Setup(Card card)
     {
-        _cardData = data;
-        cardName.text = data.cardName;
-        charge.text = data.cost.ToString();
+        cardName.text = card.cardData.CardName;
+        charge.text = card.curCost.ToString();
 
         Button button = GetComponent<Button>();
+
         if (button != null)
         {
             button.onClick.AddListener(OnCardClicked);
@@ -33,15 +34,15 @@ public class CardUI : MonoBehaviour
         {
             Debug.LogError("Button component not found on card!");
         }
+
     }
 
     private void OnCardClicked()
     {
         Debug.Log("卡牌被点击");
-        if (_handManager != null && _cardData != null)
+        if (_cardUIController != null && card != null)
         {
-            _handManager.RemoveCardFromHand(_cardData);
-            Destroy(gameObject);
+            _cardUIController.UseCard(this);
         }
         else
         {
@@ -49,6 +50,4 @@ public class CardUI : MonoBehaviour
         }
     }
 
-    // 公共属性供外部访问
-    public Card.Data GetCardData() => _cardData;
 }

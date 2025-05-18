@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"f84a039554e6341e","type":"text","text":"GameContext","x":-642,"y":-230,"width":178,"height":60},
+		{"id":"f848fa2b3f990aa0","type":"text","text":"使用方向？","x":-720,"y":-110,"width":156,"height":60},
+		{"id":"b3567b1bb707bcc3","type":"text","text":"使用者","x":-420,"y":-260,"width":120,"height":60},
+		{"id":"fa2610bf838fa996","type":"text","text":"CardUIController","x":420,"y":-30,"width":205,"height":60},
+		{"id":"4dd3eaba73c2a4c4","x":413,"y":-340,"width":220,"height":179,"type":"text","text":"负责玩家所看到的与卡牌系统相关的显示，希望所有数据都从HandController中获取"},
+		{"id":"94fb3e574bf9e3c9","type":"text","text":"HandController","x":82,"y":-30,"width":205,"height":60},
+		{"id":"9dd06755f612ba00","x":60,"y":-275,"width":250,"height":120,"type":"text","text":"负责管理游戏内与卡牌相关的操作，包括抽卡洗牌，卡牌堆的管理等"},
+		{"id":"3cba1ed40cbd9191","x":-240,"y":-30,"width":160,"height":60,"type":"text","text":"Card对象"},
+		{"id":"53d7c88833daf170","type":"text","text":"HandUI","x":777,"y":-194,"width":205,"height":60},
+		{"id":"284ebddf48d82220","x":755,"y":-364,"width":250,"height":89,"type":"text","text":"代表玩家的手牌堆显示区域，控制CardUI的位置"},
+		{"id":"2df0821369db2da6","type":"text","text":"CardUI","x":818,"y":60,"width":131,"height":60},
+		{"id":"e60a0d1375233056","x":658,"y":200,"width":195,"height":60,"type":"text","text":"Card对象的引用"},
+		{"id":"0623d6fef4a54bd5","x":891,"y":200,"width":233,"height":60,"type":"text","text":"代表玩家手里的卡牌，为HandUI中的元素"},
+		{"id":"605a578c662af9bb","x":-478,"y":296,"width":250,"height":60,"type":"text","text":"抽牌事件"},
+		{"id":"b2856b7543703c6f","x":-478,"y":380,"width":250,"height":60,"type":"text","text":"手牌变化事件"},
+		{"id":"8793e032e4ca06fd","x":-478,"y":460,"width":250,"height":60,"type":"text","text":""}
+	],
+	"edges":[
+		{"id":"4ca1027e33b44c0d","fromNode":"94fb3e574bf9e3c9","fromSide":"left","toNode":"3cba1ed40cbd9191","toSide":"right"},
+		{"id":"17fe42e76a86b2d6","fromNode":"fa2610bf838fa996","fromSide":"right","toNode":"53d7c88833daf170","toSide":"left"},
+		{"id":"b3dfa702a0bd7330","fromNode":"fa2610bf838fa996","fromSide":"left","toNode":"94fb3e574bf9e3c9","toSide":"right"},
+		{"id":"bd0fc658b2bc9440","fromNode":"fa2610bf838fa996","fromSide":"top","toNode":"4dd3eaba73c2a4c4","toSide":"bottom"},
+		{"id":"a6823bc6220fe2c3","fromNode":"53d7c88833daf170","fromSide":"top","toNode":"284ebddf48d82220","toSide":"bottom"},
+		{"id":"f527d05b15d799dd","fromNode":"2df0821369db2da6","fromSide":"bottom","toNode":"0623d6fef4a54bd5","toSide":"top"},
+		{"id":"cf3c508d005313dc","fromNode":"94fb3e574bf9e3c9","fromSide":"top","toNode":"9dd06755f612ba00","toSide":"bottom"},
+		{"id":"b8537ac60de721b0","fromNode":"2df0821369db2da6","fromSide":"bottom","toNode":"e60a0d1375233056","toSide":"top"},
+		{"id":"fcb7dc6dd13c640b","fromNode":"fa2610bf838fa996","fromSide":"right","toNode":"2df0821369db2da6","toSide":"left"}
+	]
+}

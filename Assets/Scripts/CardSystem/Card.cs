@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Card
 {
-    readonly CardData cardData;
+    public readonly CardData cardData;
     /* ---------- 生成时字段 ---------- */
     public struct CardData { 
         public string CardName; 
@@ -28,14 +28,13 @@ public class Card
         }
     }
 
-
     /* ---------- 运行时字段 ---------- */
     public float curColdTime;
     public int curCost;
     public bool playable = false;
     readonly List<Modifier> _modifiers = new();
 
-    public Card(CardsTable row, GameCtx ctx)
+    public Card(CardsTable row, Object obj)
     {
         cardData = new CardData(row);
         curColdTime = cardData.BaseColdTime;
@@ -49,10 +48,10 @@ public class Card
         }
     }
 
-    public void Play(GameCtx ctx)
+    public void Play(CardUseContext ctx)
     {
-        if (!Playable || ctx.Owner.Mana < CurCost) return;
-        ctx.Owner.Mana -= CurCost;
-        EventBus.Publish(new GameEvent { Type = GameEvt.CardPlayed, Source = this, Target = ctx.Target });
+        if (!this.playable) return;
+        ctx.Owner.GetComponent<FeeManager>().ConsumeFee(curCost);
+        EventBus.Publish(new GameEvent { Type = GameEvt.CardPlayed, Source = this });
     }
 }

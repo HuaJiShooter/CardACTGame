@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class HandManager : MonoBehaviour
 {
+    /*
     [Header("Deck Settings")]
     public List<Card.Data> deck = new List<Card.Data>(); // 这是抽排堆
     public List<Card.Data> hand = new List<Card.Data>(); // 这是手牌堆
@@ -49,41 +50,9 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public void DrawCard()
-    {
-        if (hand.Count >= handLimit)
-        {
-            Debug.Log("手牌已达上限");
-            return;
-        }
-
-        if (deck.Count == 0)
-        {
-            Debug.Log("牌库为空");
-            return;
-        }
-
-        Card.Data drawnCard = deck[0];
-        deck.RemoveAt(0);
-        hand.Add(drawnCard);
-
-        if (handUI != null)
-        {
-            handUI.AddCardToHand(drawnCard);
-        }
-    }
-
-    public void RemoveCardFromHand(Card.Data cardData)
-    {
-        if (hand.Contains(cardData))
-        {
-            hand.Remove(cardData);
-            Debug.Log($"移除卡牌: {cardData.cardName}");
-        }
-    }
-
     private void OnDestroy()
     {
         StopAllCoroutines();
     }
+    */
 }

@@ -29,7 +29,7 @@ public class Modifier
     }
     void Handle(GameEvent e)
     {
-        if (_conds.All(cd => cd.Evaluate(_owner, e, _owner.Ctx)))
-            foreach (var eff in _effects) eff.Apply(_owner, _owner.Ctx);
+        if (_conds.All(cd => cd.Evaluate(_owner, e)))
+            foreach (var eff in _effects) eff.Apply(_owner);
     }
 }

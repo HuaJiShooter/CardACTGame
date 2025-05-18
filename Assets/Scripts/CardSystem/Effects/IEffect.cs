@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEffect
 {
-    void Apply(Card self, GameContext ctx);
+    void Apply(Card self);
 }

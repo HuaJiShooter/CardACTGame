@@ -5,8 +5,6 @@ using UnityEngine.UI;
 public class HandUI : MonoBehaviour
 {
     [Header("UI Settings")]
-    public GameObject cardPrefab;
-    public Transform handPanel;
     public float slideDuration = 0.15f;
     public float visibleYPosition = 0f;
     public float hiddenYPosition = -230f;
@@ -16,38 +14,13 @@ public class HandUI : MonoBehaviour
 
     private void Update()
     {
+        // ±Õ£ΩÁ√Ê
         bool shouldShow = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         if (shouldShow != _isHandVisible)
         {
             _isHandVisible = shouldShow;
             SlideHandUI(_isHandVisible);
-        }
-    }
-
-    public void AddCardToHand(Card.Data cardData)
-    {
-        if (cardPrefab == null || handPanel == null) return;
-
-        GameObject cardObj = Instantiate(cardPrefab, handPanel);
-        CardUI cardUI = cardObj.GetComponent<CardUI>();
-
-        if (cardUI != null)
-        {
-            cardUI.Setup(cardData);
-        }
-    }
-
-    public void RemoveCardFromHand(Card card)
-    {
-        foreach (Transform child in handPanel)
-        {
-            CardUI cardUI = child.GetComponent<CardUI>();
-            if (cardUI != null)
-            {
-                Destroy(child.gameObject);
-                return;
-            }
         }
     }
 
