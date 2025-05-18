@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"43d5154f5447843e","type":"group","x":-222,"y":-135,"width":444,"height":270,"label":"静态类 事件总线"},
+		{"id":"51b1ecc1bafecc29","x":-151,"y":-440,"width":303,"height":250,"type":"group","label":"结构体 GameEvent"},
+		{"id":"4636669f1ae06d20","type":"text","text":"public struct GameEvent","x":-222,"y":-85,"width":444,"height":50},
+		{"id":"15d0ff625d1b9eac","type":"text","text":"public static void Subscribe(GameEvt t, Action<GameEvent> cb)","x":-222,"y":-35,"width":444,"height":60},
+		{"id":"64b18e50784bd9f1","type":"text","text":"public static void Unsubscribe(GameEvt t, Action<GameEvent> cb)","x":-222,"y":25,"width":444,"height":60},
+		{"id":"b735184f3f328323","type":"text","text":"public static void Publish(in GameEvent e)","x":-222,"y":85,"width":444,"height":50},
+		{"id":"faf169344ed398ba","type":"text","text":"EventBus","x":-222,"y":-135,"width":444,"height":50,"color":"5"},
+		{"id":"1e1415862d18170e","x":-151,"y":-440,"width":303,"height":50,"color":"5","type":"text","text":"GameEvent"},
+		{"id":"894ffbaf38ec84fd","type":"text","text":"public object  Payload","x":-151,"y":-290,"width":303,"height":50},
+		{"id":"340a27bb592f7e6d","type":"text","text":"public CardUseContext Context","x":-151,"y":-240,"width":303,"height":50},
+		{"id":"61091eb0d48383a0","x":-151,"y":-390,"width":303,"height":50,"type":"text","text":"public object  Source"},
+		{"id":"aed5dfa145bb6842","type":"text","text":"public object  Target","x":-151,"y":-340,"width":303,"height":50}
+	],
+	"edges":[
+		{"id":"fd182a55dd4e6855","fromNode":"340a27bb592f7e6d","fromSide":"bottom","toNode":"43d5154f5447843e","toSide":"top","toEnd":"none"}
+	]
+}

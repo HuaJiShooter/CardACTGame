@@ -11,17 +11,31 @@
             "id": "4bd829351af31c93",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "策划文档/Effect列表.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Effect列表"
+            }
+          },
+          {
+            "id": "a7ad3d74aa0111ea",
+            "type": "leaf",
+            "state": {
               "type": "canvas",
               "state": {
-                "file": "未命名.canvas",
+                "file": "ER图.canvas",
                 "viewState": {
-                  "x": -200.2578302006927,
-                  "y": 361.1577415135081,
-                  "zoom": -0.3333333333333333
+                  "x": 1023.5,
+                  "y": -270,
+                  "zoom": 0
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "未命名"
+              "title": "ER图"
             }
           },
           {
@@ -32,9 +46,9 @@
               "state": {
                 "file": "毕设系统设计.canvas",
                 "viewState": {
-                  "x": -1970.7474163700076,
-                  "y": 2431.602723225538,
-                  "zoom": -1.0007083740077463
+                  "x": -648.5,
+                  "y": 419.5,
+                  "zoom": -0.4487870833401714
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -45,20 +59,18 @@
             "id": "8c2fc9d619ab39dd",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Modifier/Modifier.canvas",
-                "viewState": {
-                  "x": 2438.7787655754955,
-                  "y": 420.1722101239484,
-                  "zoom": -1.699410426286194
-                }
+                "file": "进度.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Modifier"
+              "icon": "lucide-file",
+              "title": "进度"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -205,21 +217,27 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4bd829351af31c93",
+  "active": "a7ad3d74aa0111ea",
   "lastOpenFiles": [
-    "未命名.canvas",
-    "工具类用法/JsonListUtility.md",
-    "工具类用法/ParamHelper.md",
-    "Modifier/Modifier.canvas",
+    "Modifier/CardDB.canvas",
     "毕设系统设计.canvas",
-    "工具类用法",
-    "ER图.canvas",
-    "Modifier/卡牌Modifier父类.canvas",
     "卡牌生成流程.canvas",
-    "头脑风暴.canvas",
     "战斗循环.canvas",
+    "头脑风暴.canvas",
+    "未命名.canvas",
     "Card父类.canvas",
+    "Modifier/Card和Modifier工厂.canvas",
+    "Modifier/EventBus.canvas",
+    "Modifier/Effect和Condition工厂.canvas",
+    "Modifier/Modifier.canvas",
+    "策划文档/Effect列表.md",
     "进度.md",
+    "策划文档/Condition列表.md",
+    "Modifier/EventBus.md",
+    "工具类用法/ParamHelper.md",
+    "工具类用法/JsonListUtility.md",
+    "策划文档",
+    "工具类用法",
     "Modifier",
     "想法.md",
     "欢迎.md"

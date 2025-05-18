@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class CardUIController : MonoBehaviour
 {
@@ -11,29 +12,34 @@ public class CardUIController : MonoBehaviour
     [Header("References")]
     public Transform handPanel;
     public HandUI handUI;
-
-    // 关联的对象
     private HandController _handController;
-    public Text cardNameText;
-    public Text costText;
-    public Text descriptionText;
+
 
     private void Start()
     {
-        
+        _handController = GameObject.Find("Player").GetComponent<HandController>();
+        EventBus.Subscribe(GameEvt.HandChanged, RefreshHandErea);
     }
 
-    // 初始化UI
-    public void Initialize(Card card, HandController handController)
+
+    //手牌变动，刷新手牌区域
+    public void RefreshHandErea(GameEvent e)
     {
-        Card _associatedCard = card;
-        _handController = handController;
+        Debug.Log("刷新手牌区域中...");
+        var currentUICards = handPanel.GetComponentsInChildren<CardUI>(includeInactive: false);
+        var currentHandCards = _handController._handPile;
 
-        // 更新UI显示
-        cardNameText.text = card.cardData.CardName;
-        costText.text = card.curCost.ToString();
-        descriptionText.text = card.cardData.Description;
+        foreach (var cardUI in currentUICards)
+        {
+            RemoveCardFromHand(cardUI.associate_card);
+        }
+
+        foreach (var card in currentHandCards)
+        {
+            AddCardToHand(card);
+        }
     }
+
 
     // 点击使用卡牌事件处理
     public void UseCard(CardUI cardUI)

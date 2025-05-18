@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"dde3ed8df2fd3ff2","type":"group","x":80,"y":-167,"width":495,"height":344,"label":"静态类 AutoMapper"},
+		{"id":"4278c361a48ab515","type":"group","x":84,"y":442,"width":488,"height":180,"label":"接口类 ICondition"},
+		{"id":"30f6af1f11acbf10","type":"group","x":83,"y":-580,"width":488,"height":178,"label":"接口类 IEffect"},
+		{"id":"d63cbd53dd4d94f6","type":"group","x":80,"y":-66,"width":495,"height":119,"label":"静态变量"},
+		{"id":"cf8ff2b17eae1f15","type":"group","x":134,"y":246,"width":386,"height":120,"label":"工厂类 ConditionFactory"},
+		{"id":"23e207514992bc0b","type":"group","x":80,"y":96,"width":495,"height":81,"label":"静态函数"},
+		{"id":"34c21fcbb8b8470f","type":"group","x":162,"y":-340,"width":331,"height":120,"label":"工厂类 EffectFactory"},
+		{"id":"0e752ffbb1217880","type":"text","text":"ConditionFactory","x":134,"y":246,"width":386,"height":60,"color":"5"},
+		{"id":"28c100cd283c4785","type":"text","text":"IEffect","x":83,"y":-580,"width":488,"height":60,"color":"5"},
+		{"id":"b698c81c912dcfc4","type":"text","text":"void Apply(Card self,CardUseContext ctx);","x":83,"y":-520,"width":488,"height":58},
+		{"id":"8b0d91aded4af866","type":"text","text":"EffectFactory","x":162,"y":-340,"width":331,"height":60,"color":"5"},
+		{"id":"6dfde424d965eaae","type":"text","text":"public static IEffect Create(string id)","x":162,"y":-280,"width":331,"height":60},
+		{"id":"932cfefc15c9bd27","type":"text","text":"void Apply(Card self, CardUseContext ctx, int param = 0);","x":83,"y":-462,"width":488,"height":60},
+		{"id":"017ebf6770213e56","type":"text","text":"public static ICondition Create(string id)","x":134,"y":306,"width":386,"height":60},
+		{"id":"e77199607973a4dd","type":"text","text":"AutoMapper","x":80,"y":-167,"width":495,"height":60,"color":"5"},
+		{"id":"b65c24cb4f9b7a06","type":"text","text":"public static readonly Dictionary<string, Type> CondMap","x":80,"y":-66,"width":495,"height":59},
+		{"id":"3075b2cdb4cf950e","type":"text","text":"ICondition","x":84,"y":442,"width":488,"height":60,"color":"5"},
+		{"id":"418b6a52341cdd76","type":"text","text":"bool Evaluate(Card self, GameEvent e)","x":84,"y":502,"width":488,"height":60},
+		{"id":"e897746d8a5948e0","type":"text","text":"IEnumerable<GameEvt> SubscribedEvents","x":84,"y":562,"width":488,"height":60},
+		{"id":"850e725e93a4eec9","type":"text","text":"AutoMapper()","x":80,"y":101,"width":495,"height":60},
+		{"id":"c1208e169a8b597f","type":"text","text":"public static readonly Dictionary<string, Type> EffMap","x":80,"y":-7,"width":495,"height":60}
+	],
+	"edges":[
+		{"id":"664aec6a4d7dce10","fromNode":"6dfde424d965eaae","fromSide":"bottom","toNode":"dde3ed8df2fd3ff2","toSide":"top","toEnd":"none"},
+		{"id":"f01ff0a1330664f9","fromNode":"0e752ffbb1217880","fromSide":"top","toNode":"23e207514992bc0b","toSide":"bottom","toEnd":"none"},
+		{"id":"e0435780512d3f3d","fromNode":"017ebf6770213e56","fromSide":"bottom","toNode":"4278c361a48ab515","toSide":"top","toEnd":"none"},
+		{"id":"bcfbabc795099a6d","fromNode":"932cfefc15c9bd27","fromSide":"bottom","toNode":"34c21fcbb8b8470f","toSide":"top","toEnd":"none"}
+	]
+}

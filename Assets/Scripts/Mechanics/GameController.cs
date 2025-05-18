@@ -1,5 +1,6 @@
 using Platformer.Core;
 using Platformer.Model;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Platformer.Mechanics
@@ -15,10 +16,25 @@ namespace Platformer.Mechanics
         //This model field is public and can be therefore be modified in the 
         //inspector.
         //The reference actually comes from the InstanceRegister, and is shared
-        //through the simulation and events. Unity will deserialize over this
         //shared reference when the scene loads, allowing the model to be
         //conveniently configured inside the inspector.
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        public GameObject Player;
+        public HandController handController;
+
+        private void Awake()
+        {
+            Debug.Log("正在初始化卡牌数据库");
+            CardDB.Init();
+            Player = GameObject.Find("Player");
+            handController = Player.GetComponent<HandController>();
+            Debug.Log("正在初始化牌组");
+            handController.InitializeDrawPile
+                (
+                new List<string> { "NormalCard", "NormalCard", "NormalCard", "FireBall", "FireBall", "FireBall" },
+                Player
+                );
+        }
 
         void OnEnable()
         {

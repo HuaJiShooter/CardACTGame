@@ -16,7 +16,7 @@ public class CardsTable
 
     public string CardFace { get; set; }  //Í¼Æ¬»òµØÖ·
 
-    public float ColdTime { get; set; } = 0f;   //ÀäÈ´
+    public float ColdTime { get; set; } = 10f;   //ÀäÈ´
 
     public float WaitTime { get; set; } = -1f;  //µÈ´ı
 

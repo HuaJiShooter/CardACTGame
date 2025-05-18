@@ -7,6 +7,7 @@ static class ModifierFactory
 {
     public static Modifier Create(string name)
     {
+        Debug.Log("ModifierFactory正在创建" + name);
         //通过ModifierName获取一个ModifiersTable行对象
         var modifier = CardDB.GetModifierRow(name);
 

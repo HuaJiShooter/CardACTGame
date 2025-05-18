@@ -26,6 +26,7 @@ public static class JsonListUtility
         if (string.IsNullOrEmpty(json))
             return new List<string>();
 
+        Debug.Log("反序列化时收到的 JSON 内容：" + json);
         var wrapper = JsonUtility.FromJson<Wrapper>(json);
         return wrapper?.list ?? new List<string>();
     }

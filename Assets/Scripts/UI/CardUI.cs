@@ -10,7 +10,7 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI descriptionText;
 
     [Header("Card Data")]
-    private Card card;
+    public Card associate_card;
     private CardUIController _cardUIController;
 
     private void Start()
@@ -21,6 +21,8 @@ public class CardUI : MonoBehaviour
     //设置卡牌至手牌区
     public void Setup(Card card)
     {
+        Debug.Log("正在生成cardUI");
+        associate_card = card;
         cardName.text = card.cardData.CardName;
         charge.text = card.curCost.ToString();
 
@@ -40,7 +42,7 @@ public class CardUI : MonoBehaviour
     private void OnCardClicked()
     {
         Debug.Log("卡牌被点击");
-        if (_cardUIController != null && card != null)
+        if (_cardUIController != null && associate_card != null)
         {
             _cardUIController.UseCard(this);
         }

@@ -9,9 +9,11 @@ static class EffectFactory
             throw new Exception($"Unknown Effect id:{id}");
 
         return argStr == null
-            ? (IEffect)Activator.CreateInstance(tp)!
+            ? (IEffect)Activator.CreateInstance(tp)!        //无参分支
             : (IEffect)Activator.CreateInstance(tp,
-                  ParamHelper.ConvertArg(tp.GetConstructors()[0]
-                      .GetParameters()[0].ParameterType, (string)argStr))!;
+                  ParamHelper.ConvertArg
+                  (
+                      tp.GetConstructors()[0].GetParameters()[0].ParameterType, (string)argStr)         //有参分支
+                  )!;
     }
 }

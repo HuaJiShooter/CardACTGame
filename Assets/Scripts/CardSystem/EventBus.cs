@@ -9,6 +9,7 @@ public struct GameEvent {
     public object  Source;      // 触发者或卡牌
     public object  Target;      // 受影响目标
     public object  Payload;     // 其他参数
+    public CardUseContext Context;
 }
 
 public static class EventBus
@@ -22,8 +23,10 @@ public static class EventBus
         if (_map.TryGetValue(t, out var lst)) lst.Remove(cb);
     }
     public static void Publish(in GameEvent e) {
+
         if (_map.TryGetValue(e.Type, out var lst))
             // 简单遍历；高频可改成 for
             foreach (var cb in lst) cb.Invoke(e);
+
     }
 }

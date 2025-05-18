@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"acd39c8384ff7aca","type":"group","x":-340,"y":-323,"width":680,"height":613,"label":"卡牌Modifier类"},
+		{"id":"0c6f1cbceb0abeb2","type":"group","x":-340,"y":-85,"width":680,"height":150,"label":"函数"},
+		{"id":"6fd0d81ba88d7816","type":"group","x":-340,"y":101,"width":392,"height":189,"label":"变量"},
+		{"id":"aacea3c8a2bbbd55","type":"group","x":-270,"y":-512,"width":540,"height":134,"label":"工厂类 CardFactory"},
+		{"id":"96ace107cd568140","type":"group","x":-340,"y":-219,"width":680,"height":82,"label":"构造函数"},
+		{"id":"f1699c21e7e8fd85","type":"group","x":-194,"y":400,"width":387,"height":112,"label":"工厂类 ModifierFactory"},
+		{"id":"a713e17eb5e3a3e8","type":"text","text":"\tpublic Card _owner;","x":-340,"y":101,"width":680,"height":60},
+		{"id":"2b79324b765faa91","type":"text","text":"\treadonly List<ICondition> _conds","x":-340,"y":161,"width":680,"height":60},
+		{"id":"434fd2d4c7a44f98","type":"text","text":"\treadonly List<IEffect>    _effects","x":-340,"y":221,"width":680,"height":69},
+		{"id":"b0c272bc77e50fee","type":"text","text":"public void Bind(CardRuntime c, GameContext ctx)","x":-340,"y":-85,"width":680,"height":50},
+		{"id":"22aabd21cadbb2c8","type":"text","text":"public void Unbind()","x":-340,"y":-35,"width":680,"height":50},
+		{"id":"9dd3a06f42609948","type":"text","text":"void Handle(GameEvent e)","x":-340,"y":15,"width":680,"height":50},
+		{"id":"15da2fd8e6e55511","type":"text","text":"ModifierFactory","x":-194,"y":400,"width":387,"height":52,"color":"5"},
+		{"id":"4e47bbbd3e61eb3f","type":"text","text":"public static Modifier Create(string name)","x":-194,"y":452,"width":387,"height":60},
+		{"id":"1e5a6b0e188b2b17","type":"text","text":"Modifier","x":-340,"y":-323,"width":680,"height":60,"color":"5"},
+		{"id":"6360236a004c222c","type":"text","text":"\tpublic Modifier(IEnumerable<ICondition> cs, IEnumerable<IEffect> es)","x":-340,"y":-219,"width":680,"height":82},
+		{"id":"fb67773a0fef3ea4","type":"text","text":"CardFactory","x":-270,"y":-512,"width":540,"height":63,"color":"5"},
+		{"id":"020d42247ad7764f","type":"text","text":"public static CardRuntime Create(string cardId, GameContext ctx)","x":-270,"y":-449,"width":540,"height":71}
+	],
+	"edges":[
+		{"id":"b11dbe6d833830bf","fromNode":"f1699c21e7e8fd85","fromSide":"top","toNode":"acd39c8384ff7aca","toSide":"bottom"},
+		{"id":"016c6cb00335f599","fromNode":"020d42247ad7764f","fromSide":"bottom","toNode":"acd39c8384ff7aca","toSide":"top"}
+	]
+}

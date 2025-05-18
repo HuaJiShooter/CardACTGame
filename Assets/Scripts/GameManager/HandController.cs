@@ -11,24 +11,12 @@ public class HandController : MonoBehaviour
 
 
     // 牌堆列表
-    private List<Card> _drawPile = new List<Card>();    //抽牌堆
-    private List<Card> _discardPile = new List<Card>(); //弃牌堆
-    private ObservableList<Card> _handPile = new ObservableList<Card>();    //手牌堆
-    private List<Card> _waitPile = new List<Card>();   //待释放卡牌队列
+    public List<Card> _drawPile = new List<Card>();    //抽牌堆
+    public List<Card> _discardPile = new List<Card>(); //弃牌堆
+    public ObservableList<Card> _handPile = new ObservableList<Card>();  //手牌堆
+    public List<Card> _waitPile = new List<Card>();   //待释放卡牌队列
 
-    // 生成时调用的构造函数
-    public HandController(List<string> _cardNameList, UnityEngine.Object obj)
-    {
-        InitializeDrawPile(_cardNameList,obj);
-        DrawCards(2);
-    }
 
-    // 
-    private void Awake()
-    {
-        _handPile.OnListChanged += HandleHandChanged;
-        StartCoroutine(DrawCardRoutine());
-    }
 
     // 抽牌协程
     private IEnumerator DrawCardRoutine()
@@ -41,18 +29,27 @@ public class HandController : MonoBehaviour
     }
 
     // 初始化抽牌堆
-    private void InitializeDrawPile(List<string> _cardNameList, UnityEngine.Object obj)
+    public void InitializeDrawPile(List<string> _cardNameList, UnityEngine.Object obj)
     {
+        Debug.Log("进入初始化牌组方法");
+        this._cardNameList = _cardNameList;
+
         _drawPile.Clear();
 
         // 由每个名创建Card实例
         foreach (string cardName in _cardNameList)
         {
-            CardFactory.Create(cardName,obj);
+            _drawPile.Add(CardFactory.Create(cardName, obj));
         }
 
         // 洗牌
         Shuffle(_drawPile);
+
+        //事件与初始化协程
+        _handPile.OnListChanged += HandleHandChanged;
+        StartCoroutine(DrawCardRoutine());
+
+        Debug.Log("初始化牌组完毕");
     }
 
 
@@ -79,6 +76,7 @@ public class HandController : MonoBehaviour
     // 从抽牌堆抽指定数量的牌
     public void DrawCards(int amount)
     {
+        Debug.Log("进入抽牌函数");
         for (int i = 0; i < amount; i++)
         {
             if (_drawPile.Count == 0)
@@ -89,7 +87,6 @@ public class HandController : MonoBehaviour
                     return;
                 }
             }
-
             Card drawnCard = _drawPile[0];
             _drawPile.RemoveAt(0);
             _handPile.Add(drawnCard);
@@ -116,7 +113,7 @@ public class HandController : MonoBehaviour
     // 重洗弃牌堆
     private void ReshuffleDiscardPile()
     {
-        Debug.Log("抽牌堆空了，重新洗入弃牌堆...");
+        Debug.Log("抽牌堆空了");
 
         _drawPile.AddRange(_discardPile);
         _discardPile.Clear();
@@ -146,7 +143,8 @@ public class HandController : MonoBehaviour
         {
             Type = GameEvt.DrawCard,
             Source = this,
-            Payload = drawncard      // 直接把当前手牌列表一起抛出
+            Payload = drawncard,      // 直接把当前手牌列表一起抛出
+            Context = new CardUseContext(gameObject)
         });
     }
 
@@ -158,7 +156,8 @@ public class HandController : MonoBehaviour
         EventBus.Publish(new GameEvent
         {                      // ② 后广播给 Condition
             Type = GameEvt.HandChanged,
-            Source = this
+            Source = this,
+            Context = new CardUseContext(gameObject)
         });
     }
 }
@@ -167,6 +166,11 @@ public class HandController : MonoBehaviour
 public class CardUseContext
 {
     public GameObject Owner;
+    public CardUseContext(GameObject _owner)
+    {
+        Owner = _owner;
+    }
+
 }
 
 // 元素变化会自动触发事件的牌堆类

@@ -7,13 +7,17 @@ public class Modifier
 {
     readonly List<ICondition> _conds;
     readonly List<IEffect> _effects;
-    Card _owner;
+    public Card _owner;
 
     public Modifier(IEnumerable<ICondition> cs, IEnumerable<IEffect> es)
     {
         _conds = cs.ToList();
         _effects = es.ToList();
     }
+
+
+
+
     public void Bind(Card card)
     {
         _owner = card;
@@ -29,7 +33,16 @@ public class Modifier
     }
     void Handle(GameEvent e)
     {
+
         if (_conds.All(cd => cd.Evaluate(_owner, e)))
-            foreach (var eff in _effects) eff.Apply(_owner);
+        {
+            // 尝试取第一个 IValueCondition 的数值
+            int val = 0;
+            var vc = _conds.OfType<IValueCondition>().FirstOrDefault();
+            if (vc != null) val = vc.Value;
+
+            foreach (var fx in _effects)
+                fx.Apply(_owner, e.Context, val);
+        }
     }
 }
