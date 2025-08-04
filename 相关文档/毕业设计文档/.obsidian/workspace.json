@@ -27,15 +27,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "ER图.canvas",
+                "file": "Modifier/Modifier.canvas",
                 "viewState": {
-                  "x": 1023.5,
-                  "y": -270,
-                  "zoom": 0
+                  "x": 1401.61397075842,
+                  "y": 503.0700648693798,
+                  "zoom": -0.6994104262861942
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "ER图"
+              "title": "Modifier"
             }
           },
           {
@@ -219,23 +219,23 @@
   },
   "active": "a7ad3d74aa0111ea",
   "lastOpenFiles": [
-    "Modifier/CardDB.canvas",
-    "毕设系统设计.canvas",
-    "卡牌生成流程.canvas",
-    "战斗循环.canvas",
-    "头脑风暴.canvas",
-    "未命名.canvas",
-    "Card父类.canvas",
-    "Modifier/Card和Modifier工厂.canvas",
     "Modifier/EventBus.canvas",
     "Modifier/Effect和Condition工厂.canvas",
+    "Modifier/CardDB.canvas",
+    "Modifier/Card和Modifier工厂.canvas",
     "Modifier/Modifier.canvas",
-    "策划文档/Effect列表.md",
-    "进度.md",
-    "策划文档/Condition列表.md",
-    "Modifier/EventBus.md",
+    "zhb用技能系统.canvas",
+    "战斗循环.canvas",
+    "头脑风暴.canvas",
+    "卡牌生成流程.canvas",
+    "毕设系统设计.canvas",
     "工具类用法/ParamHelper.md",
     "工具类用法/JsonListUtility.md",
+    "未命名.canvas",
+    "进度.md",
+    "策划文档/Effect列表.md",
+    "策划文档/Condition列表.md",
+    "Modifier/EventBus.md",
     "策划文档",
     "工具类用法",
     "Modifier",

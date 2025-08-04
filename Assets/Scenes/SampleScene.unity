@@ -100646,11 +100646,8 @@ MonoBehaviour:
   cardUIPrefab: {fileID: 4764626453486767035, guid: 3cbc9ad5b5cd148448fa858982790ed1,
     type: 3}
   cardImage: {fileID: 0}
-  handPanel: {fileID: 0}
-  handUI: {fileID: 0}
-  cardNameText: {fileID: 0}
-  costText: {fileID: 0}
-  descriptionText: {fileID: 0}
+  handPanel: {fileID: 1852923073}
+  handUI: {fileID: 1852923076}
 --- !u!1001 &818136908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250055,13 +250052,6 @@ MonoBehaviour:
     jumpDeceleration: 0
   Player: {fileID: 0}
   handController: {fileID: 0}
-  testCardList:
-  - FireSlash
-  - FireSlash
-  - FireSlash
-  - FireBall
-  - FireBall
-  - FireBall
 --- !u!4 &1754240608
 Transform:
   m_ObjectHideFlags: 0

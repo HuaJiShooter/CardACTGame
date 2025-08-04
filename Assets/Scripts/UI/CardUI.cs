@@ -9,7 +9,7 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI charge;
     public TextMeshProUGUI descriptionText;
 
-    [Header("Card Data")]
+    [Header("CardUI Data")]
     public Card associate_card;
     private CardUIController _cardUIController;
 
@@ -19,10 +19,11 @@ public class CardUI : MonoBehaviour
     }
 
     //设置卡牌至手牌区
-    public void Setup(Card card)
+    public void Setup(Card card, CardUIController controller)
     {
         Debug.Log("正在生成cardUI");
         associate_card = card;
+        _cardUIController = controller;
         cardName.text = card.cardData.CardName;
         charge.text = card.curCost.ToString();
 
@@ -39,16 +40,25 @@ public class CardUI : MonoBehaviour
 
     }
 
+    //设置卡牌至手牌区
+    public void Remove()
+    {
+        Debug.Log("正在移除cardUI");
+
+        // 销毁该UI对象
+        Destroy(this.gameObject);
+    }
+
     private void OnCardClicked()
     {
         Debug.Log("卡牌被点击");
-        if (_cardUIController != null && associate_card != null)
+        if (associate_card != null)
         {
             _cardUIController.UseCard(this);
         }
         else
         {
-            Debug.LogError("HandManager or CardData is missing!");
+            Debug.LogError("CardData is missing!");
         }
     }
 

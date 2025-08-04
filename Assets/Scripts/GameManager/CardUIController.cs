@@ -31,12 +31,13 @@ public class CardUIController : MonoBehaviour
 
         foreach (var cardUI in currentUICards)
         {
-            RemoveCardFromHand(cardUI.associate_card);
+            Debug.Log("当前cardUI为", cardUI.cardName);
+            RemoveCardUIFromHand(cardUI);
         }
 
         foreach (var card in currentHandCards)
         {
-            AddCardToHand(card);
+            AddCardUIToHand(card);
         }
     }
 
@@ -44,11 +45,13 @@ public class CardUIController : MonoBehaviour
     // 点击使用卡牌事件处理
     public void UseCard(CardUI cardUI)
     {
-        Debug.Log("点击了卡牌");
+        Debug.Log("进入卡牌时间处理阶段", cardUI.cardName);
+        _handController.UseCard(cardUI.associate_card,new CardUseContext(_handController.gameObject));
+        // 将当前卡牌移入弃牌堆
     }
 
     // 添加卡牌到手牌（UI层面）
-    public void AddCardToHand(Card card)
+    public void AddCardUIToHand(Card card)
     {
         if (cardUIPrefab == null || handPanel == null) return;
 
@@ -57,21 +60,13 @@ public class CardUIController : MonoBehaviour
 
         if (cardUI != null)
         {
-            cardUI.Setup(card);
+            cardUI.Setup(card,this);
         }
     }
 
-    public void RemoveCardFromHand(Card card)
+    public void RemoveCardUIFromHand(CardUI cardUI)
     {
-        foreach (Transform child in handPanel)
-        {
-            CardUI cardUI = child.GetComponent<CardUI>();
-            if (cardUI != null)
-            {
-                Destroy(child.gameObject);
-                return;
-            }
-        }
+        cardUI.Remove();
     }
 
     // 销毁卡牌UI

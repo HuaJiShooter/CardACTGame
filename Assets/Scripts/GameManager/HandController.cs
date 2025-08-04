@@ -5,6 +5,10 @@ using System;
 
 public class HandController : MonoBehaviour
 {
+    //可调参数
+    public float drawCardWaitTime = 2f;
+    public int maxHandCardLimit = 5;
+
 
     // 卡组
     private List<string> _cardNameList = new List<string>();
@@ -23,9 +27,10 @@ public class HandController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
-            DrawCards(1);
+            yield return new WaitForSeconds(drawCardWaitTime);
+            if(_handPile.Count < maxHandCardLimit)  DrawCards(1);
         }
+
     }
 
     // 初始化抽牌堆
@@ -61,9 +66,9 @@ public class HandController : MonoBehaviour
             Debug.LogWarning("无法弃牌：卡牌不在手牌中");
             return;
         }
-
         _handPile.Remove(card);
         _discardPile.Add(card);
+        StartCoroutine(ReturnToDrawPileAfterDelay(card, card.curColdTime));
         Debug.Log($"弃掉卡牌: {card.cardData.CardName}");
     }
 
@@ -123,8 +128,10 @@ public class HandController : MonoBehaviour
 
 
     // 使用卡牌
-    public void UseCard(CardUIController cardUI, Card card, CardUseContext ctx)
+    public void UseCard(Card card, CardUseContext ctx)
     {
+        Debug.Log("使用卡牌");
+        Debug.Log(card);
         // 执行卡牌效果
         card.Play(ctx);
         // 移至弃牌堆
@@ -160,6 +167,21 @@ public class HandController : MonoBehaviour
             Context = new CardUseContext(gameObject)
         });
     }
+
+    // 回到抽牌堆等待时间的携程
+    private IEnumerator ReturnToDrawPileAfterDelay(Card card, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 安全检查：卡是否仍在弃牌堆中（防止重复添加）
+        if (_discardPile.Contains(card))
+        {
+            _discardPile.Remove(card);
+            _drawPile.Add(card); // 或 Insert(0, card) 放到牌堆顶
+            Debug.Log($"卡牌 {card.cardData.CardName} 已返回抽牌堆");
+        }
+    }
+
 }
 
 // 卡牌系统通用上下文
